@@ -1,4 +1,4 @@
-export class DbConfig {
+export class JsonDbConfig {
   constructor(
     public readonly filePath: string,
   ) {}
