@@ -1,14 +1,14 @@
-import { DbConfig } from "./dbConfig";
+import { JsonDb } from "./jsonDb";
 import { LoadDogIntent } from "./loadDogIntent";
 
 export class DogRepo {
   constructor(
-    private readonly dbConfig: DbConfig,
+    private readonly db: JsonDb
   ) {}
 
   public getById(id: number): LoadDogIntent {
     return new LoadDogIntent(
-      this.dbConfig,
+      this.db,
       id,
     );
   }

@@ -1,5 +1,5 @@
 export class DbConfig {
   constructor(
-    public readonly filePath,
+    public readonly filePath: string,
   ) {}
 }
