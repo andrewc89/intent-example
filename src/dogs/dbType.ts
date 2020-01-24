@@ -1,4 +1,4 @@
 export type DogDbType = {
-  id: number;
+  id?: string;
   name: string;
 };

@@ -1,13 +1,10 @@
-import { JsonDb } from "../db/jsonDb";
-import { DogDbType } from "../dbType";
+import * as SimpleJsonDb from "simple-json-db";
 import { GetByIdIntent } from "./intent";
 
 export class GetByIdRepo {
-  constructor(
-    private readonly db: JsonDb<DogDbType>
-  ) {}
+  constructor(private readonly db: SimpleJsonDb) {}
 
-  public getById(id: number): GetByIdIntent {
+  public getById(id: string): GetByIdIntent {
     return new GetByIdIntent(this.db, id);
   }
 }

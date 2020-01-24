@@ -1,14 +1,17 @@
-import { JsonDb } from "../db/jsonDb";
+import * as SimpleJsonDb from "simple-json-db";
 import { DogDbType } from "../dbType";
 
 export class GetByIdIntent {
   constructor(
-    private readonly jsonDb: JsonDb<DogDbType>,
-    private readonly id: number,
+    private readonly db: SimpleJsonDb,
+    private readonly id: string,
   ) {}
 
   public async exec(): Promise<DogDbType|undefined> {
-    const dogs = await this.jsonDb.load();
-    return dogs.find(dog => dog.id === this.id);
+    const dog = JSON.parse(this.db.get(this.id));
+    return Promise.resolve({
+      id: this.id,
+      ...dog,
+    });
   }
 }

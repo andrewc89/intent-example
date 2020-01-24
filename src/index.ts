@@ -1,16 +1,16 @@
-import * as path from "path";
-import { JsonDbConfig } from "./dogs/db/config";
-import { JsonDb } from "./dogs/db/jsonDb";
+import * as SimpleJsonDb from "simple-json-db";
+
+import { CreateRepo } from "./dogs/create/repo";
 import { GetByIdRepo } from "./dogs/getById/repo";
 import { DogManager } from "./dogs/manager";
 
-const dbPath = path.join(__dirname, "./db.json");
+const dbPath = "dogs.json";
 
 (async () => {
+  const db = new SimpleJsonDb(dbPath);
   const manager = new DogManager(
-    new GetByIdRepo(
-      new JsonDb(new JsonDbConfig(dbPath)),
-    )
+    new CreateRepo(db),
+    new GetByIdRepo(db),
   );
   await manager.run();
 })();
