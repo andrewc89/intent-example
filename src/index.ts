@@ -1,16 +1,9 @@
-import * as SimpleJsonDb from "simple-json-db";
-
-import { CreateRepo } from "./dogs/create/repo";
-import { GetByIdRepo } from "./dogs/getById/repo";
-import { DogManager } from "./dogs/manager";
+import { DogContainer } from "./container";
 
 const dbPath = "dogs.json";
 
 (async () => {
-  const db = new SimpleJsonDb(dbPath);
-  const manager = new DogManager(
-    new CreateRepo(db),
-    new GetByIdRepo(db),
-  );
+  const container = new DogContainer().bind(dbPath);
+  const manager = container.getManager();
   await manager.run();
 })();

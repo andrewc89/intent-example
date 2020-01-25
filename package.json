@@ -21,7 +21,9 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "inversify": "^5.0.1",
     "lokijs": "^1.5.8",
+    "reflect-metadata": "^0.1.13",
     "simple-json-db": "^1.2.2",
     "uuid": "^3.4.0"
   }
