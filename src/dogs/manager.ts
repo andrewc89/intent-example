@@ -12,8 +12,9 @@ export class DogManager {
       name: "Ruger",
     });
     await createOp.save();
-    const intent = this.getByIdRepo.getById(createOp.id());
-    const dog = await intent.exec();
+    const getByIdOp = this.getByIdRepo.getById(createOp.id());
+    await getByIdOp.exec();
+    const dog = getByIdOp.dog();
     console.log(dog);
   }
 }
